@@ -57,7 +57,7 @@ class OrdersPackage < ActiveRecord::Base
   end
 
   def assign_dispatched_location
-    DispatchAndUndispatch::Dispatch.new(self, package, quantity).assign_or_update_dispatched_location(id, quantity)
+    DispatchAndUndispatch::Dispatch.new(package, nil, quantity, self).assign_or_update_dispatched_location(id, quantity)
   end
 
   def undispatch_orders_package
