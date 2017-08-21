@@ -115,9 +115,9 @@ class Package < ActiveRecord::Base
     packages_locations.first.update_quantity(received_quantity)
   end
 
-  # def dispatch_from_stockit?
-  #   stockit_sent_on_changed? && GoodcitySync.request_from_stockit
-  # end
+  def dispatch_from_stockit?
+    stockit_sent_on_changed? && GoodcitySync.request_from_stockit
+  end
 
   def build_or_create_packages_location(location_id, operation)
     if GoodcitySync.request_from_stockit && is_singleton_package? && self.packages_locations.exists?
